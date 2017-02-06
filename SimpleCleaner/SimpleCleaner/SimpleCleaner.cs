@@ -23,8 +23,14 @@ namespace SimpleCleaner
     public class SimpleCleaner : Plugin
     {
 
+        protected override void OnEnable()
+        {
+            Console.WriteLine("Successfully enabled.");
+        }
+
         [Command(
-            Name = "cls"
+            Name = "cls",
+            Description = "Clean up your chatting windows simply."
             )]
         public void CleanUpCommand(Player sender)
         {
