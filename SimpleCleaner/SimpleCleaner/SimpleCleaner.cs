@@ -13,6 +13,8 @@
 
 using System;
 
+using log4net;
+
 using MiNET;
 using MiNET.Plugins;
 using MiNET.Plugins.Attributes;
@@ -23,9 +25,14 @@ namespace SimpleCleaner
     public class SimpleCleaner : Plugin
     {
 
+        private const string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
+
+        /** @var ILog Log */
+        protected static ILog Log = LogManager.GetLogger(typeof(SimpleCleaner));
+
         protected override void OnEnable()
         {
-            Console.WriteLine("Successfully enabled.");
+            Console.WriteLine($"{Prefix} Successfully enabled.");
         }
 
         [Command(
