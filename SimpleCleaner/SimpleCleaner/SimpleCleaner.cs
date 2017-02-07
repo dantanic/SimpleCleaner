@@ -13,8 +13,6 @@
 
 using System;
 
-using log4net;
-
 using MiNET;
 using MiNET.Plugins;
 using MiNET.Plugins.Attributes;
