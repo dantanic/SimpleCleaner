@@ -32,6 +32,7 @@ namespace SimpleCleaner
     {
 
         private const string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
+
         protected override void OnEnable()
         {
             Console.WriteLine($"{Prefix} Successfully enabled.");
@@ -39,7 +40,7 @@ namespace SimpleCleaner
 
         [Command(
             Name = "cls",
-            Description = "Clean up your chatting windows simply."
+            Description = "Clean up your chatting windows command."
             )]
         public void CleanUpCommand(Player sender)
         {
