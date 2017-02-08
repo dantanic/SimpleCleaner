@@ -40,7 +40,7 @@ namespace SimpleCleaner
 
         [Command(
             Name = "cls",
-            Description = "Clean your chat command."
+            Description = "Cleaning chat command."
             )]
         public void CleanUpCommand(Player sender)
         {
