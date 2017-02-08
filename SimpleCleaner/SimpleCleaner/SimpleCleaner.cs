@@ -24,7 +24,7 @@ namespace SimpleCleaner
 
     [Plugin(
         PluginName = "SimpleCleaner",
-        Description = "Clean up your chatting windows simply.",
+        Description = "The easiest way to clean your chat.",
         PluginVersion = "1.0",
         Author = "Herb9"
         )]
@@ -40,7 +40,7 @@ namespace SimpleCleaner
 
         [Command(
             Name = "cls",
-            Description = "Clean up your chatting windows command."
+            Description = "Clean your chat command."
             )]
         public void CleanUpCommand(Player sender)
         {
