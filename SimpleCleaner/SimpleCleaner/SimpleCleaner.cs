@@ -17,6 +17,8 @@ using MiNET;
 using MiNET.Plugins;
 using MiNET.Plugins.Attributes;
 
+using MiNET.Utils;
+
 namespace SimpleCleaner
 {
 
@@ -36,7 +38,16 @@ namespace SimpleCleaner
             )]
         public void CleanUpCommand(Player sender)
         {
+            int Count = 0;
 
+            do
+            {
+                sender.SendMessage($"{ChatColors.White}\n");
+
+                ++Count;
+            }
+
+            while(Count < 20);
         }
     }
 }
