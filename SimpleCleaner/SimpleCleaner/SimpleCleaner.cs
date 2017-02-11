@@ -33,7 +33,6 @@ namespace SimpleCleaner
 
         public const string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
 
-        /** @var int Count */
         private int Count;
 
         protected override void OnEnable()
@@ -45,7 +44,7 @@ namespace SimpleCleaner
             Name = "cls",
             Description = "Cleaning chat command."
             )]
-        public void CleanUpCommand(Player sender)
+        public void ClsCommand(Player sender)
         {
             Count = 0;
 
