@@ -31,13 +31,9 @@ namespace SimpleCleaner
     public class SimpleCleaner : Plugin
     {
 
-        public const string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
-
-        private int Count;
-
         protected override void OnEnable()
         {
-            Console.WriteLine($"{Prefix} Successfully enabled.");
+            Console.WriteLine("[SimpleCleaner] SimpleCleaner v1.0 successfully enabled.");
         }
 
         [Command(
@@ -46,16 +42,16 @@ namespace SimpleCleaner
             )]
         public void ClsCommand(Player sender)
         {
-            Count = 0;
+            int num = 0;
 
             do
             {
                 sender.SendMessage($"{ChatColors.White}\n");
 
-                Count++;
+                num++;
             }
 
-            while(Count < 20);
+            while(num < 20);
         }
     }
 }
