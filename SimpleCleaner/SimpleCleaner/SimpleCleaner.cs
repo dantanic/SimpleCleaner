@@ -72,14 +72,16 @@ namespace SimpleCleaner
 
             if(plugin.Info.Version > 1.1)
             {
-                Console.WriteLine($"{Prefix} New version has been found, Please go to {plugin.Info.Url} and download new version plugin.");
+                Console.WriteLine($"{Prefix} New version has been found, Please go to {plugin.Info.Url} website and download new version plugin.");
 
                 Context.Server.StopServer();
             }
+            else
+            {
+                Console.WriteLine($"{Prefix} You are currently using the latest version.");
 
-            Console.WriteLine($"{Prefix} You are currently using the latest version.");
-
-            Console.WriteLine($"{Prefix} SimpleCleaner v1.1 successfully enabled.");
+                Console.WriteLine($"{Prefix} SimpleCleaner v1.1 successfully enabled.");
+            }
         }
     }
 }
