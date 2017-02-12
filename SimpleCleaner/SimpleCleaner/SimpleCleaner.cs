@@ -13,6 +13,13 @@
 
 using System;
 
+using System.Web;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+using System.Net;
+
 using MiNET;
 using MiNET.Plugins;
 using MiNET.Plugins.Attributes;
@@ -25,7 +32,7 @@ namespace SimpleCleaner
     [Plugin(
         PluginName = "SimpleCleaner",
         Description = "The easiest way to clean your chat.",
-        PluginVersion = "1.0",
+        PluginVersion = "1.1",
         Author = "Herb9"
         )]
     public class SimpleCleaner : Plugin
@@ -33,7 +40,7 @@ namespace SimpleCleaner
 
         protected override void OnEnable()
         {
-            Console.WriteLine("[SimpleCleaner] SimpleCleaner v1.0 successfully enabled.");
+            Console.WriteLine("[SimpleCleaner] SimpleCleaner v1.1 successfully enabled.");
         }
 
         [Command(
