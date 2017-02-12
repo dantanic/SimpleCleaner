@@ -13,12 +13,11 @@
 
 using System;
 
-using System.Web;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 using System.Net;
+
+using System.Text;
+
+using Newtonsoft.Json.Linq;
 
 using MiNET;
 using MiNET.Plugins;
@@ -38,9 +37,11 @@ namespace SimpleCleaner
     public class SimpleCleaner : Plugin
     {
 
+        private string Prefix = "";
+
         protected override void OnEnable()
         {
-            Console.WriteLine("[SimpleCleaner] SimpleCleaner v1.1 successfully enabled.");
+            CheckUpdate();
         }
 
         [Command(
@@ -59,6 +60,26 @@ namespace SimpleCleaner
             }
 
             while(num < 20);
+        }
+
+        private void CheckUpdate()
+        {
+            byte[] base64 = Convert.FromBase64String("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0hlcmJQbHVnaW5zL1NpbXBsZUNsZWFuZXIvbWFzdGVyL1NpbXBsZUNsZWFuZXIvU2ltcGxlQ2xlYW5lci9wbHVnaW4uanNvbg==");
+
+            var url = new WebClient().DownloadString(Encoding.UTF8.GetString(base64));
+
+            dynamic plugin = JObject.Parse(url);
+
+            if(plugin.Info.Version > 1.1)
+            {
+                Console.WriteLine($"{Prefix} New version has been found, Please go to {plugin.Info.Url} and download new version plugin.");
+
+                Context.Server.StopServer();
+            }
+
+            Console.WriteLine($"{Prefix} You are currently using the latest version.");
+
+            Console.WriteLine($"{Prefix} SimpleCleaner v1.1 successfully enabled.");
         }
     }
 }
