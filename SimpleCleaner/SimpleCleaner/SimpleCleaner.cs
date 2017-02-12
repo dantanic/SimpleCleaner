@@ -37,7 +37,7 @@ namespace SimpleCleaner
     public class SimpleCleaner : Plugin
     {
 
-        private string Prefix = "";
+        private string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
 
         protected override void OnEnable()
         {
