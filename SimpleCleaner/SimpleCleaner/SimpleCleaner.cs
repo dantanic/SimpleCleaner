@@ -11,77 +11,48 @@
     Directed by Herb9.
 */
 
-using System;
-
-using System.Net;
-
-using System.Text;
-
-using Newtonsoft.Json.Linq;
-
 using MiNET;
 using MiNET.Plugins;
 using MiNET.Plugins.Attributes;
 
-using MiNET.Utils;
+using Newtonsoft.Json.Linq;
+
+using System;
+using System.Net;
+using System.Text;
 
 namespace SimpleCleaner
 {
 
-    [Plugin(
-        PluginName = "SimpleCleaner",
-        Description = "The easiest way to clean your chat.",
-        PluginVersion = "1.1",
-        Author = "Herb9"
-        )]
+    [Plugin(PluginName = "SimpleCleaner", Description = "The easiest way to clean your chat.", PluginVersion = "1.2", Author = "Herb9")]
     public class SimpleCleaner : Plugin
     {
 
-        private string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
+        public const string Prefix = "\x5b\x53\x69\x6d\x70\x6c\x65\x43\x6c\x65\x61\x6e\x65\x72\x5d";
 
         protected override void OnEnable()
         {
             CheckUpdate();
         }
 
-        [Command(
-            Name = "cls",
-            Description = "Cleaning chat command."
-            )]
+        [Command(Name = "cls", Description = "Cleaning chat command.")]
         public void ClsCommand(Player sender)
         {
-            int num = 0;
-
-            do
-            {
-                sender.SendMessage($"{ChatColors.White}\n");
-
-                num++;
-            }
-
-            while(num < 20);
+            for (int i = 0; i < 20; ++i)
+                sender.SendMessage("§f\n");
         }
 
         private void CheckUpdate()
         {
-            byte[] base64 = Convert.FromBase64String("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0hlcmJQbHVnaW5zL1NpbXBsZUNsZWFuZXIvbWFzdGVyL1NpbXBsZUNsZWFuZXIvU2ltcGxlQ2xlYW5lci9wbHVnaW4uanNvbg==");
+            byte[] url = Convert.FromBase64String("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0hlcmJQbHVnaW5zL1NpbXBsZUNsZWFuZXIvbWFzdGVyL1NpbXBsZUNsZWFuZXIvU2ltcGxlQ2xlYW5lci9wbHVnaW4uanNvbg==");
 
-            var url = new WebClient().DownloadString(Encoding.UTF8.GetString(base64));
+            dynamic update = JObject.Parse(new WebClient().DownloadString(Encoding.UTF8.GetString(url)));
 
-            dynamic plugin = JObject.Parse(url);
+            if (update.Version > 1.2)
+                Console.WriteLine(Prefix + " New version has been found, Please inquire developer or download new version.");
 
-            if(plugin.Info.Version > 1.1)
-            {
-                Console.WriteLine($"{Prefix} New version has been found, Please go to {plugin.Info.Url} website and download new version plugin.");
-
-                Context.Server.StopServer();
-            }
             else
-            {
-                Console.WriteLine($"{Prefix} You are currently using the latest version.");
-
-                Console.WriteLine($"{Prefix} SimpleCleaner v1.1 successfully enabled.");
-            }
+                Console.WriteLine(Prefix + " SimpleCleaner v1.2 successfully enabled.");
         }
     }
 }
